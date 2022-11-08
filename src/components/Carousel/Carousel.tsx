@@ -12,7 +12,6 @@ interface CarouselProps {
 
 const Carousel = () => {
   useGetMovies([]);
-  console.log("hola")
   const movies = useAppSelector((state) => state.movies);
   if (!movies || movies.length === 0) return <div>Error</div>;
 
