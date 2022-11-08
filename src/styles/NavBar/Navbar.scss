@@ -1,0 +1,41 @@
+@import "../sass/colors";
+
+.Navbar {
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  opacity: 0.9;
+  position: fixed;
+  padding: 2rem 5rem;
+  align-items: center;
+  transition: all 0.5s ease;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 26, 50, 1) 1%,
+    rgba(20, 26, 50, 0) 100%
+  );
+  justify-content: space-between;
+
+  &.active {
+    padding: 1rem 1rem;
+    background-color: $primary-color;
+  }
+
+  &-right {
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    width: 7rem;
+  }
+
+  &-link {
+    font-size: 1.1rem;
+    color: $text-color;
+    text-decoration: none;
+  }
+}

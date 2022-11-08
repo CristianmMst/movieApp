@@ -1,0 +1,30 @@
+@import "../sass/colors";
+@import "../sass/variables";
+
+.search {
+  height: 3rem;
+  display: flex;
+  border: $border;
+  align-items: center;
+  padding: 0 0.8rem;
+  border-radius: 0.8rem;
+  justify-content: space-between;
+  background-color: $secondary-color-op;
+
+  input {
+    height: 100%;
+    color: white;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+      font-size: 1rem;
+      color: rgba(184, 184, 184, 1);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
