@@ -3,16 +3,12 @@ import { API_IMAGE } from "@/consts";
 import { useEffect, useState } from "react";
 import "../../styles/Carousel/Carousel.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { useAppSelector } from "@/hooks/redux";
-import { useGetMovies } from "@/hooks";
 
 interface CarouselProps {
   movies: Movie[];
 }
 
-const Carousel = () => {
-  useGetMovies([]);
-  const movies = useAppSelector((state) => state.movies);
+const Carousel = ({ movies }: CarouselProps) => {
   if (!movies || movies.length === 0) return <div>Error</div>;
 
   const [loaded, setLoaded] = useState(false);
