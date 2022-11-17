@@ -5,19 +5,19 @@ import "../../styles/Carousel/Carousel.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 interface CarouselProps {
-  movies: Movie[];
+  carousel: Movie[];
 }
 
-const Carousel = ({ movies }: CarouselProps) => {
-  if (!movies || movies.length === 0) return <div>Error</div>;
+const Carousel = ({ carousel }: CarouselProps) => {
+  if (!carousel || carousel.length === 0) return <div>Error</div>;
 
   const [loaded, setLoaded] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(movies[0]);
+  const [selectedImage, setSelectedImage] = useState(carousel[0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      selectNewImage(selectedIndex, movies);
+      selectNewImage(selectedIndex, carousel);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -43,33 +43,33 @@ const Carousel = ({ movies }: CarouselProps) => {
   };
 
   const changeImage = (index: number) => {
-    setSelectedImage(movies[index]);
+    setSelectedImage(carousel[index]);
     setSelectedIndex(index);
   };
 
-  const selectNewImage = (index: number, movies: Movie[], next = true) => {
+  const selectNewImage = (index: number, carousel: Movie[], next = true) => {
     setLoaded(false);
     setTimeout(() => {
-      const condition = next ? index < movies.length - 1 : index > 0;
+      const condition = next ? index < carousel.length - 1 : index > 0;
       const nextIndex = next
         ? condition
           ? index + 1
           : 0
         : condition
         ? index - 1
-        : movies.length - 1;
+        : carousel.length - 1;
 
-      setSelectedImage(movies[nextIndex]);
+      setSelectedImage(carousel[nextIndex]);
       setSelectedIndex(nextIndex);
     }, 500);
   };
 
   const prev = () => {
-    selectNewImage(selectedIndex, movies!, false);
+    selectNewImage(selectedIndex, carousel!, false);
   };
 
   const next = () => {
-    selectNewImage(selectedIndex, movies!);
+    selectNewImage(selectedIndex, carousel!);
   };
 
   return (
@@ -100,7 +100,7 @@ const Carousel = ({ movies }: CarouselProps) => {
         <IoIosArrowForward size={50} />
       </button>
       <div className="Carousel-dots">
-        {movies.map((movie, index) => {
+        {carousel.map((movie, index) => {
           if (index === selectedIndex) {
             return (
               <button

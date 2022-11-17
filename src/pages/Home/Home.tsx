@@ -1,14 +1,19 @@
-import { useGetMovies } from "@/hooks";
-import { useAppSelector } from "@/hooks/redux";
+import { useEffect } from "react";
 import Carousel from "@/components/Carousel/Carousel";
+import { getCarouselMovies } from "@/redux/slices/movieSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 const Home = () => {
-  const movies = useAppSelector((state) => state.movies);
-  useGetMovies([]);
+  const { carousel } = useAppSelector((state) => state.movies);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCarouselMovies());
+  }, [dispatch]);
 
   return (
     <>
-      <Carousel movies={movies} />
+      <Carousel carousel={carousel} />
     </>
   );
 };
