@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Carousel from "@/components/Carousel/Carousel";
-import { getCarouselMovies } from "@/redux/slices/movieSlice";
+import { getMovies } from "@/redux/slices/movieSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import PopularMovies from "@/components/PopularMovies/PopularMovies";
 
@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getCarouselMovies());
+    dispatch(getMovies());
   }, [dispatch]);
 
   return (

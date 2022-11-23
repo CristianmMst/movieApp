@@ -1,5 +1,5 @@
 import { Movie } from "@/types";
-import { fetchCarousel } from "@/hooks";
+import { fetchCarousel, fetchPopular } from "@/hooks";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
 
@@ -20,17 +20,22 @@ export const movieSlice = createSlice({
     getMoviesCarousel: (state, action: PayloadAction<Movie[]>) => {
       state.carousel = action.payload;
     },
+    getMoviesPopular: (state, action: PayloadAction<Movie[]>) => {
+      state.popular = action.payload;
+    },
   },
 });
 
-export const getCarouselMovies = (): AppThunk => async (dispatch) => {
+export const getMovies = (): AppThunk => async (dispatch) => {
   try {
-    const prueba = await fetchCarousel();
-    dispatch(getMoviesCarousel(prueba!));
+    const carousel = await fetchCarousel();
+    const popular = await fetchPopular();
+    dispatch(getMoviesPopular(popular!));
+    dispatch(getMoviesCarousel(carousel!));
   } catch (error) {
     console.log(error);
   }
 };
 
-export const { getMoviesCarousel } = movieSlice.actions;
+export const { getMoviesCarousel, getMoviesPopular } = movieSlice.actions;
 export default movieSlice.reducer;
