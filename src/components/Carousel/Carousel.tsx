@@ -47,7 +47,7 @@ const Carousel = ({ carousel }: CarouselProps) => {
     setSelectedIndex(index);
   };
 
-  const selectNewImage = (index: number, carousel: Movie[], next = true) => {
+  const selectNewImage = (index: number, carousel: CarouselMovie[], next = true) => {
     setLoaded(false);
     setTimeout(() => {
       const condition = next ? index < carousel.length - 1 : index > 0;
