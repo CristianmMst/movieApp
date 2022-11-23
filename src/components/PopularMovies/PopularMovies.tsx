@@ -1,11 +1,11 @@
 import "./PopularMovies.scss";
 import { Navigation } from "swiper";
-import { PopularMovies } from "@/types";
+import { PopularMovie } from "@/types";
 import { API_IMAGE_POSTER } from "@/consts";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 interface PopularMoviesProps {
-  popular: PopularMovies[];
+  popular: PopularMovie[];
 }
 
 const Popular = ({ popular }: PopularMoviesProps) => {
