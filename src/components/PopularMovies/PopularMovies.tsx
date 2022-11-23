@@ -1,14 +1,30 @@
 import "./PopularMovies.scss";
-import Swiper, { Navigation, Pagination } from "swiper";
+import { Navigation } from "swiper";
+import { PopularMovies } from "@/types";
+import { API_IMAGE_POSTER } from "@/consts";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-/* const swiper = new Swiper({}); */
+interface PopularMoviesProps {
+  popular: PopularMovies[];
+}
 
-const PopularMovies = () => {
+const Popular = ({ popular }: PopularMoviesProps) => {
   return (
-    <div className="PopularMovies">
-      <h3 className="PopularMovies-title">Películas Populares</h3>
+    <div className="Popular">
+      <h3 className="Popular-title">Películas Populares</h3>
+      <Swiper loop navigation slidesPerView={5} spaceBetween={35} modules={[Navigation]}>
+        {popular.map((movie, index) => (
+          <SwiperSlide key={index}>
+            <img
+              className="Swiper-img"
+              src={`${API_IMAGE_POSTER}${movie.image}`}
+              alt={movie.title}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
 
-export default PopularMovies;
+export default Popular;

@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Carousel carousel={carousel} />
-      <PopularMovies />
+      <PopularMovies popular={popular} />
     </>
   );
 };

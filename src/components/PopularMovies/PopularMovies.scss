@@ -1,6 +1,21 @@
-.PopularMovies {
+.Popular {
   margin: 3rem;
   &-title {
     color: white;
   }
+}
+
+.Swiper {
+  &-img {
+    width: 220px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}
+
+.swiper-wrapper {
+}
+
+.swiper {
+  display: flex;
 }

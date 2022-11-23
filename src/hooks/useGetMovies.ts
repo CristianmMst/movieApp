@@ -37,22 +37,16 @@ export const fetchPopular = async () => {
       data: { results },
     }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/popular");
 
-    const moviesDatil = results.slice(0, 10);
-    console.log(moviesDatil);
+    const moviesDatil = results.slice(0, 10).map((movie) => {
+      return {
+        id: movie.id,
+        title: movie.title,
+        image: movie.poster_path,
+        description: movie.overview,
+      };
+    });
 
-    return await Promise.all(moviesDatil).then((response) =>
-      response.map((movie: MovieFetch) => {
-        return {
-          id: movie.id,
-          title: movie.title,
-          runtime: movie.runtime,
-          average: movie.vote_average,
-          image: movie.backdrop_path,
-          release: movie.release_date,
-          description: movie.overview,
-        };
-      })
-    );
+    return Promise.all(moviesDatil);
   } catch (error) {
     console.log(error);
   }
