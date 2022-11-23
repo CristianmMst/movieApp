@@ -1,7 +1,7 @@
+import "./Carousel.scss";
 import { Movie } from "@/types";
 import { API_IMAGE } from "@/consts";
 import { useEffect, useState } from "react";
-import "../../styles/Carousel/Carousel.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 interface CarouselProps {
