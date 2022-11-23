@@ -1,4 +1,4 @@
-export interface PopularMovies {
+export interface PopularMovie {
   id: number;
   image: string;
   title: string;
@@ -22,8 +22,8 @@ export interface MovieFetch {
   overview: string;
   vote_average: number;
   release_date: string;
-  poster_path?: string;
-  backdrop_path?: string;
+  poster_path: string;
+  backdrop_path: string;
 }
 
 export interface Fetch {

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { axiosInstance } from "@/utils";
-import { Fetch, MovieFetch } from "@/types";
+import { Fetch, MovieFetch, PopularMovie } from "@/types";
 
 export const fetchCarousel = async () => {
   try {
@@ -37,7 +37,7 @@ export const fetchPopular = async () => {
       data: { results },
     }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/popular");
 
-    const moviesDatil = results.slice(0, 10).map((movie) => {
+    const moviesDatil: PopularMovie[] = results.slice(0, 10).map((movie) => {
       return {
         id: movie.id,
         title: movie.title,

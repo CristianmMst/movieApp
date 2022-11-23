@@ -1,11 +1,11 @@
-import { Movie } from "@/types";
+import { CarouselMovie, PopularMovie } from "@/types";
 import { fetchCarousel, fetchPopular } from "@/hooks";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
 
 interface MovieState {
-  carousel: Movie[];
-  popular: Movie[];
+  carousel: CarouselMovie[];
+  popular: PopularMovie[];
 }
 
 const initialState: MovieState = {
@@ -17,10 +17,10 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    getMoviesCarousel: (state, action: PayloadAction<Movie[]>) => {
+    getMoviesCarousel: (state, action: PayloadAction<CarouselMovie[]>) => {
       state.carousel = action.payload;
     },
-    getMoviesPopular: (state, action: PayloadAction<Movie[]>) => {
+    getMoviesPopular: (state, action: PayloadAction<PopularMovie[]>) => {
       state.popular = action.payload;
     },
   },
