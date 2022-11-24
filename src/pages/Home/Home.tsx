@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Carousel from "@/components/Carousel/Carousel";
 import { getMovies } from "@/redux/slices/movieSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import PopularMovies from "@/components/PopularMovies/PopularMovies";
+import Popular from "@/components/Popular/Popular";
 
 const Home = () => {
   const { carousel } = useAppSelector((state) => state.movies);
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Carousel carousel={carousel} />
-      <PopularMovies popular={popular} />
+      <Popular popular={popular} />
     </>
   );
 };

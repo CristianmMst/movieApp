@@ -1,4 +1,4 @@
-import "./PopularMovies.scss";
+import "./Popular.scss";
 import { Navigation } from "swiper";
 import { PopularMovie } from "@/types";
 import { API_IMAGE_POSTER } from "@/consts";
