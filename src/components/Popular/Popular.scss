@@ -1,5 +1,10 @@
 .Popular {
   margin: 3rem;
+
+  @media (max-width: 600px) {
+    margin: 1rem;
+  }
+
   &-title {
     margin-bottom: 1rem;
     color: white;
@@ -8,15 +13,21 @@
 
 .Swiper {
   &-img {
-    width: 220px;
-    object-fit: cover;
     border-radius: 0.5rem;
+    width: 100%;
   }
-}
-
-.swiper-wrapper {
 }
 
 .swiper {
   display: flex;
+  &-button-prev {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+  &-button-next {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
 }

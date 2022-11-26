@@ -1,5 +1,5 @@
-@import "../sass/colors";
-@import "../sass/variables";
+@import "../../styles/sass/colors";
+@import "../../styles/sass/variables";
 
 .search {
   height: 3rem;
@@ -26,5 +26,8 @@
       display: flex;
       align-items: center;
     }
+  }
+  @media (max-width: 700px) {
+    display: none;
   }
 }

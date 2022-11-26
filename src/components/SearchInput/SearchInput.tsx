@@ -1,5 +1,5 @@
+import "./SearchInput.scss";
 import { FiSearch } from "react-icons/fi";
-import "../../styles/SearchInput/SearchInput.scss";
 
 const SearchInput = () => {
   return (
