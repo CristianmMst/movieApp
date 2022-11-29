@@ -27,12 +27,12 @@
   display: flex;
   &-button-prev {
     @media (max-width: 700px) {
-      display: none;
+      display: none !important;
     }
   }
   &-button-next {
     @media (max-width: 700px) {
-      display: none;
+      display: none !important;
     }
   }
 }
