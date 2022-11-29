@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { axiosInstance } from "@/utils";
-import { Fetch, MovieFetch, SliderMovie } from "@/types";
+import { Fetch, MovieDetail, MovieFetch, SliderMovie } from "@/types";
 
 export const fetchCarousel = async () => {
   try {
@@ -75,7 +75,7 @@ export const fetchNowPlaying = async () => {
 
 export const fetchMovieDetail = async (id: number) => {
   try {
-    const { data }: AxiosResponse<Fetch> = await axiosInstance.get(
+    const { data }: AxiosResponse<MovieDetail> = await axiosInstance.get(
       `/movie/${id}`
     );
     return data;
