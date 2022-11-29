@@ -1,9 +1,9 @@
 import "./Navbar.scss";
 import { useState } from "react";
 import logo from "../../assets/logo.svg";
+import { FiSearch } from "react-icons/fi";
 import { MdOutlineMenu } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
-import SearchInput from "../SearchInput/SearchInput";
 
 const Navbar = () => {
   const [navScroll, setNavScroll] = useState(false);
@@ -35,7 +35,12 @@ const Navbar = () => {
             Series
           </a>
         </div>
-        <SearchInput />
+        <div className="search">
+          <input type={"text"} placeholder="Buscar películas" />
+          <button type={"button"}>
+            <FiSearch className="icon" size={24} />
+          </button>
+        </div>
         <div className="Navbar-mobile" onClick={handleMobile}>
           {navMobileActive ? (
             <AiOutlineClose size={30} color="white" />

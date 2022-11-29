@@ -1,4 +1,4 @@
-export interface PopularMovie {
+export interface SliderMovie {
   id: number;
   image: string;
   title: string;
@@ -13,6 +13,17 @@ export interface CarouselMovie {
   average: number;
   runtime: number;
   description: string;
+}
+
+export interface MovieDetail {
+  id?: number;
+  title?: string;
+  runtime?: number;
+  overview?: string;
+  vote_average?: number;
+  release_date?: string;
+  poster_path?: string;
+  backdrop_path?: string;
 }
 
 export interface MovieFetch {

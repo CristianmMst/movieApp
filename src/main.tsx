@@ -1,16 +1,29 @@
-import "swiper/css";
 import "./index.css";
-import "swiper/css/navigation"
 import App from "./App";
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom/client";
+import MovieDetail from "./pages/MovieDetail";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <div>error</div>,
+  },
+  {
+    path: "/movies/:id",
+    element: <MovieDetail />,
+    errorElement: <div>error</div>,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

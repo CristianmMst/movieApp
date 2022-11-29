@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { axiosInstance } from "@/utils";
-import { Fetch, MovieFetch, PopularMovie } from "@/types";
+import { Fetch, MovieFetch, SliderMovie } from "@/types";
 
 export const fetchCarousel = async () => {
   try {
@@ -37,7 +37,7 @@ export const fetchPopular = async () => {
       data: { results },
     }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/popular");
 
-    const moviesDatil: PopularMovie[] = results.slice(0, 10).map((movie) => {
+    const moviesDatil: SliderMovie[] = results.slice(0, 10).map((movie) => {
       return {
         id: movie.id,
         title: movie.title,
@@ -47,6 +47,38 @@ export const fetchPopular = async () => {
     });
 
     return Promise.all(moviesDatil);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchNowPlaying = async () => {
+  try {
+    const {
+      data: { results },
+    }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/now_playing");
+
+    const moviesDatil: SliderMovie[] = results.slice(0, 10).map((movie) => {
+      return {
+        id: movie.id,
+        title: movie.title,
+        image: movie.poster_path,
+        description: movie.overview,
+      };
+    });
+
+    return Promise.all(moviesDatil);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchMovieDetail = async (id: number) => {
+  try {
+    const { data }: AxiosResponse<Fetch> = await axiosInstance.get(
+      `/movie/${id}`
+    );
+    return data;
   } catch (error) {
     console.log(error);
   }

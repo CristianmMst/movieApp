@@ -1,20 +1,25 @@
 .Popular {
-  margin: 3rem;
+  margin: 2rem;
 
   @media (max-width: 600px) {
     margin: 1rem;
   }
 
   &-title {
-    margin-bottom: 1rem;
     color: white;
+    margin: 0 0 1rem 0.5rem;
   }
 }
 
 .Swiper {
   &-img {
-    border-radius: 0.5rem;
     width: 100%;
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+    @media (max-width: 700px) {
+      padding: 0;
+    }
   }
 }
 
