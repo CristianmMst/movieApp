@@ -1,0 +1,75 @@
+@import "../../styles/sass/colors";
+@import "../../styles/sass/mixins";
+
+.Detail {
+  display: flex;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  align-items: center;
+
+  &-img {
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  &-content {
+    display: flex;
+    padding: 0 3rem;
+    flex-direction: column;
+    justify-content: space-between;
+    &-title {
+      line-height: 1.8rem;
+      margin-bottom: 1rem;
+      h1 {
+        color: white;
+        font-size: 2rem;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        p{
+          color: white;
+          margin: 0 0.2rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  &-actions {
+    width: 45%;
+    color: white;
+    margin-bottom: 1rem;
+    @include flex(center, space-between);
+
+    &-percentage {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      @include flex(center, center);
+      background-color: $secondary-color;
+      border: 5px solid $border-percentage-color;
+    }
+  }
+
+  &-buttons {
+    width: 200px;
+    @include flex(center, space-between);
+    &-button {
+      padding: 1rem;
+      border-radius: 50%;
+      @include flex(center, center);
+      background-color: $secondary-color;
+    }
+  }
+
+  &-info {
+    color: white;
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    p {
+      max-width: 650px;
+    }
+  }
+}

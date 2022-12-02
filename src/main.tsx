@@ -4,14 +4,13 @@ import React from "react";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import MovieDetail from "./pages/MovieDetail";
+import MovieDetail from "./pages/MovieDetail/MovieDetail";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>error</div>,
   },
   {
     path: "/movies/:id",
@@ -21,9 +20,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
 );

@@ -1,3 +1,5 @@
+import internal from "stream";
+
 export interface SliderMovie {
   id: number;
   image: string;
@@ -23,7 +25,12 @@ export interface MovieDetail {
   vote_average?: number;
   release_date?: string;
   poster_path?: string;
+  genres?: genres[];
   backdrop_path?: string;
+}
+
+export interface genres {
+  name: string
 }
 
 export interface MovieFetch {

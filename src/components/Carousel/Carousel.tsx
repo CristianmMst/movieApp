@@ -3,6 +3,7 @@ import { CarouselMovie } from "@/types";
 import { API_IMAGE } from "@/consts";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { averagePercentage } from "@/utils/movie";
 
 interface CarouselProps {
   carousel: CarouselMovie[];
@@ -23,18 +24,6 @@ const Carousel = ({ carousel }: CarouselProps) => {
     return () => clearInterval(interval);
   });
 
-  const averagePercentage = (average: number): string => {
-    return (
-      Math.round(
-        Number(
-          average?.toString()?.replace(".", "").slice(0, 2) +
-            "." +
-            average?.toString()?.replace(".", "")?.slice(3)
-        )
-      ) + "%"
-    );
-  };
-
   const toHoursAndMinutes = (totalMinutes: number) => {
     const minutes = totalMinutes % 60;
     const hours = Math.floor(totalMinutes / 60);
@@ -47,7 +36,11 @@ const Carousel = ({ carousel }: CarouselProps) => {
     setSelectedIndex(index);
   };
 
-  const selectNewImage = (index: number, carousel: CarouselMovie[], next = true) => {
+  const selectNewImage = (
+    index: number,
+    carousel: CarouselMovie[],
+    next = true
+  ) => {
     setLoaded(false);
     setTimeout(() => {
       const condition = next ? index < carousel.length - 1 : index > 0;
@@ -56,8 +49,8 @@ const Carousel = ({ carousel }: CarouselProps) => {
           ? index + 1
           : 0
         : condition
-        ? index - 1
-        : carousel.length - 1;
+          ? index - 1
+          : carousel.length - 1;
 
       setSelectedImage(carousel[nextIndex]);
       setSelectedIndex(nextIndex);

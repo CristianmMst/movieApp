@@ -5,8 +5,13 @@ import { FiSearch } from "react-icons/fi";
 import { MdOutlineMenu } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Navbar = () => {
-  const [navScroll, setNavScroll] = useState(false);
+interface NavbarProps {
+  fixed?: boolean;
+  active?: boolean;
+}
+
+const Navbar = ({ fixed, active }: NavbarProps) => {
+  const [navScroll, setNavScroll] = useState(!fixed);
   const [navMobileActive, setNavMobileActive] = useState(false);
 
   const handleMobile = () => {
@@ -22,7 +27,11 @@ const Navbar = () => {
   return (
     <>
       <div className={`Mobile ${navMobileActive ? "active" : ""}`}></div>
-      <nav className={navScroll ? "Navbar active" : "Navbar"}>
+      <nav
+        className={`${navScroll ? "Navbar active" : "Navbar"} ${active ? "Navbar active" : "Navbar"
+          }`}
+        style={{ position: active ? "static" : "fixed" }}
+      >
         <div className="Navbar-right">
           <img className="Navbar-logo" src={logo} alt="logo" />
           <a className="Navbar-link" href="#">

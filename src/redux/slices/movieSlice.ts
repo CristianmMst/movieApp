@@ -41,7 +41,7 @@ export const movieSlice = createSlice({
   },
 });
 
-export const movieDetail =
+export const getDetail =
   (id: number): AppThunk =>
     async (dispatch) => {
       try {
@@ -57,6 +57,7 @@ export const getMovies = (): AppThunk => async (dispatch) => {
     const carousel = await fetchCarousel();
     const popular = await fetchPopular();
     const nowPlaying = await fetchNowPlaying();
+    dispatch(getMovieDetail({}));
     dispatch(getMoviesPopular(popular!));
     dispatch(getMoviesCarousel(carousel!));
     dispatch(getMoviesNowPlaying(nowPlaying!));

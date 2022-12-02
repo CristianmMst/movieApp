@@ -8,7 +8,6 @@ import { SliderMovie } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "@/hooks/redux";
-import { movieDetail } from "@/redux/slices/movieSlice";
 
 interface PopularMoviesProps {
   title: string;
@@ -44,10 +43,7 @@ const NowPlaying = ({ movies, title }: PopularMoviesProps) => {
       >
         {movies.map((movie, index: number) => (
           <SwiperSlide key={index}>
-            <Link
-              to={`movies/${movie.id}`}
-              onClick={() => dispatch(movieDetail(movie.id))}
-            >
+            <Link to={`movies/${movie.id}`}>
               <img
                 className="Swiper-img"
                 src={`${API_IMAGE_POSTER}${movie.image}`}
