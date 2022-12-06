@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-import Slider from "@/components/Slider/Slider";
-import Navbar from "@/components/Navbar/Navbar";
-import Carousel from "@/components/Carousel/Carousel";
 import { getMovies } from "@/redux/slices/movieSlice";
+import { Slider, Navbar, Carousel } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 const Home = () => {

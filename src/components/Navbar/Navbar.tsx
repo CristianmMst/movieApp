@@ -10,7 +10,7 @@ interface NavbarProps {
   active?: boolean;
 }
 
-const Navbar = ({ active }: NavbarProps) => {
+export const Navbar = ({ active }: NavbarProps) => {
   const [navScroll, setNavScroll] = useState(false);
   const [navMobileActive, setNavMobileActive] = useState(false);
 

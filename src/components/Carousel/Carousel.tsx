@@ -1,15 +1,15 @@
 import "./Carousel.scss";
-import { CarouselMovie } from "@/types";
 import { API_IMAGE } from "@/consts";
+import { CarouselMovie } from "@/types";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { averagePercentage } from "@/utils/movie";
+import { averagePercentage, toHoursAndMinutes } from "@/utils/movie";
 
 interface CarouselProps {
   carousel: CarouselMovie[];
 }
 
-const Carousel = ({ carousel }: CarouselProps) => {
+export const Carousel = ({ carousel }: CarouselProps) => {
   if (!carousel || carousel.length === 0) return <div>Error</div>;
 
   const [loaded, setLoaded] = useState(false);
@@ -23,13 +23,6 @@ const Carousel = ({ carousel }: CarouselProps) => {
 
     return () => clearInterval(interval);
   });
-
-  const toHoursAndMinutes = (totalMinutes: number) => {
-    const minutes = totalMinutes % 60;
-    const hours = Math.floor(totalMinutes / 60);
-
-    return `${hours}h ${minutes}m`;
-  };
 
   const changeImage = (index: number) => {
     setSelectedImage(carousel[index]);

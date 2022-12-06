@@ -2,20 +2,18 @@ import "swiper/css";
 import "./Slider.scss";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
+import { SliderMovie } from "@/types";
+import { Link } from "react-router-dom";
 import { API_IMAGE_POSTER } from "@/consts";
 import { FreeMode, Navigation } from "swiper";
-import { SliderMovie } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
-import { useAppDispatch } from "@/hooks/redux";
 
 interface PopularMoviesProps {
   title: string;
   movies: SliderMovie[];
 }
 
-const NowPlaying = ({ movies, title }: PopularMoviesProps) => {
-  const dispatch = useAppDispatch();
+export const Slider = ({ movies, title }: PopularMoviesProps) => {
   return (
     <div className="Popular">
       <h3 className="Popular-title">{title}</h3>
@@ -57,4 +55,4 @@ const NowPlaying = ({ movies, title }: PopularMoviesProps) => {
   );
 };
 
-export default NowPlaying;
+export default Slider;
