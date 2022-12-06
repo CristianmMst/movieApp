@@ -2,18 +2,55 @@
 @import "../../styles/sass/mixins";
 
 .Detail {
+  height: 100%;
   display: flex;
-  padding: 0 2rem;
-  margin-top: 2rem;
+  position: relative;
   align-items: center;
+  overflow: hidden;
+  padding: 5rem 2rem 0;
+
+  &::before {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(20, 20, 60, 0.6);
+  }
+
+  &-background {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(10.5, 31.5, 52.5, 1),
+        rgba(10.5, 31.5, 52.5, 0.84) 30%,
+        rgba(10.5, 31.5, 52.5, 0.84) 100%
+      );
+    }
+  }
 
   &-img {
+    z-index: 2;
     border-radius: 1rem;
     object-fit: cover;
   }
 
   &-content {
+    z-index: 2;
     display: flex;
+    width: 100%;
     padding: 0 3rem;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +64,7 @@
       div {
         display: flex;
         flex-direction: row;
-        p{
+        p {
           color: white;
           margin: 0 0.2rem;
           font-size: 0.8rem;
@@ -37,8 +74,9 @@
   }
 
   &-actions {
-    width: 45%;
+    width: 100%;
     color: white;
+    max-width: 300px;
     margin-bottom: 1rem;
     @include flex(center, space-between);
 

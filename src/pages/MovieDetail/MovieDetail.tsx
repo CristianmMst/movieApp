@@ -4,7 +4,7 @@ import { FaBookmark } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar/Navbar";
 import { averagePercentage } from "@/utils/movie";
-import { API_IMAGE_POSTER_DETAIL } from "@/consts";
+import { API_IMAGE, API_IMAGE_POSTER_DETAIL } from "@/consts";
 import { getDetail } from "@/redux/slices/movieSlice";
 import { AiFillHeart, AiFillStar } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -24,6 +24,11 @@ const MovieDetail = () => {
       <Navbar fixed={true} active={true} />
       <div className="Detail">
         <img
+          className="Detail-background"
+          src={`${API_IMAGE}${movieDetail.backdrop_path}`}
+          alt={`${movieDetail.title}`}
+        />
+        <img
           className="Detail-img"
           src={`${API_IMAGE_POSTER_DETAIL}${movieDetail.poster_path}`}
           alt={`${movieDetail.title}`}
@@ -34,9 +39,15 @@ const MovieDetail = () => {
               {movieDetail.title} ({movieDetail.release_date?.split("-")[0]})
             </h1>
             <div>
-              {movieDetail.genres?.map((genre) => (
-                <p>{genre.name},</p>
-              ))}
+              {movieDetail.genres?.map((genre, index, genres) => {
+                return (
+                  <p key={index}>
+                    {index === genres.length - 1
+                      ? `${genre.name}.`
+                      : `${genre.name},`}
+                  </p>
+                );
+              })}
             </div>
           </div>
           <div className="Detail-actions">

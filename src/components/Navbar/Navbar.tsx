@@ -10,8 +10,8 @@ interface NavbarProps {
   active?: boolean;
 }
 
-const Navbar = ({ fixed, active }: NavbarProps) => {
-  const [navScroll, setNavScroll] = useState(!fixed);
+const Navbar = ({ active }: NavbarProps) => {
+  const [navScroll, setNavScroll] = useState(false);
   const [navMobileActive, setNavMobileActive] = useState(false);
 
   const handleMobile = () => {
@@ -30,7 +30,6 @@ const Navbar = ({ fixed, active }: NavbarProps) => {
       <nav
         className={`${navScroll ? "Navbar active" : "Navbar"} ${active ? "Navbar active" : "Navbar"
           }`}
-        style={{ position: active ? "static" : "fixed" }}
       >
         <div className="Navbar-right">
           <img className="Navbar-logo" src={logo} alt="logo" />
