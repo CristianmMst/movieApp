@@ -1,5 +1,3 @@
-import internal from "stream";
-
 export interface SliderMovie {
   id: number;
   image: string;
