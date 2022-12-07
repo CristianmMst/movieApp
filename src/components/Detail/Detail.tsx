@@ -1,11 +1,11 @@
 import "./Detail.scss";
+import { MovieDetail } from "@/types";
 import { FaBookmark } from "react-icons/fa";
 import { averagePercentage } from "@/utils/movie";
 import { AiFillHeart, AiFillStar } from "react-icons/ai";
 import { API_IMAGE, API_IMAGE_POSTER_DETAIL } from "@/consts";
-import { MovieDetail } from "@/types";
 
-function Detail({ movie }: { movie: MovieDetail }) {
+export const Detail = ({ movie }: { movie: MovieDetail }) => {
   return (
     <div className="Detail">
       <img
@@ -58,6 +58,6 @@ function Detail({ movie }: { movie: MovieDetail }) {
       </section>
     </div>
   );
-}
+};
 
 export default Detail;

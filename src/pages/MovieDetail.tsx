@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Navbar } from "@/components";
 import { useParams } from "react-router-dom";
-import Detail from "./components/Detail/Detail";
+import { Detail } from "@/components";
 import { getDetail } from "@/redux/slices/movieSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
-const MovieDetail = () => {
+export const MovieDetail = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { movieDetail } = useAppSelector((state) => state.movies);
@@ -21,5 +21,3 @@ const MovieDetail = () => {
     </>
   );
 };
-
-export default MovieDetail;

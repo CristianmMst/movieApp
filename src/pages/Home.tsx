@@ -3,7 +3,7 @@ import { getMovies } from "@/redux/slices/movieSlice";
 import { Slider, Navbar, Carousel } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
-const Home = () => {
+export const Home = () => {
   const dispatch = useAppDispatch();
   const { carousel, popular, now_playing } = useAppSelector(
     (state) => state.movies
@@ -22,5 +22,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;
