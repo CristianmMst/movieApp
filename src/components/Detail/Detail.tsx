@@ -10,21 +10,21 @@ export const Detail = ({ movie }: { movie: MovieDetail }) => {
     <div className="Detail">
       <img
         className="Detail-background"
-        src={`${API_IMAGE}${movie.backdrop_path}`}
-        alt={`${movie.title}`}
+        src={`${API_IMAGE}${movie?.backdrop_path}`}
+        alt={`${movie?.title}`}
       />
       <img
         className="Detail-img"
-        src={`${API_IMAGE_POSTER_DETAIL}${movie.poster_path}`}
-        alt={`${movie.title}`}
+        src={`${API_IMAGE_POSTER_DETAIL}${movie?.poster_path}`}
+        alt={`${movie?.title}`}
       />
       <section className="Detail-content">
         <div className="Detail-content-title">
           <h1>
-            {movie.title} ({movie.release_date?.split("-")[0]})
+            {movie?.title} ({movie?.release_date?.split("-")[0]})
           </h1>
           <div>
-            {movie.genres?.map((genre, index, genres) => {
+            {movie?.genres?.map((genre, index, genres) => {
               return (
                 <p key={index}>
                   {index === genres.length - 1
@@ -37,7 +37,7 @@ export const Detail = ({ movie }: { movie: MovieDetail }) => {
         </div>
         <div className="Detail-actions">
           <div className="Detail-actions-percentage">
-            <h4>{averagePercentage(movie.vote_average!)}</h4>
+            <h4>{averagePercentage(movie?.vote_average!)}</h4>
           </div>
           <div className="Detail-buttons">
             <button className="Detail-buttons-button">
@@ -53,7 +53,7 @@ export const Detail = ({ movie }: { movie: MovieDetail }) => {
         </div>
         <div className="Detail-info">
           <h1>Resumen</h1>
-          <p>{movie.overview}</p>
+          <p>{movie?.overview}</p>
         </div>
       </section>
     </div>
