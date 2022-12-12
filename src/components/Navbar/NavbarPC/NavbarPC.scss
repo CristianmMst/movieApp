@@ -1,20 +1,6 @@
 @import "@/styles/sass/colors";
 @import "@/styles/sass/mixins";
-
-.Mobile {
-  top: 0;
-  left: -100%;
-  width: 80%;
-  height: 100vh;
-  z-index: 100;
-  position: fixed;
-  transition: left 0.5s ease;
-  background-color: $primary-color;
-
-  &.active {
-    left: 0;
-  }
-}
+@import "@/styles/sass/variables";
 
 .Navbar {
   top: 0;
@@ -40,12 +26,11 @@
   }
 
   &-right {
-    width: 30rem;
+    width: 20rem;
     @include flex(center, space-between);
-    @media (max-width: 700px) {
-      a {
-        display: none;
-      }
+    &-link {
+      color: white;
+      text-decoration: none;
     }
   }
 
@@ -58,39 +43,7 @@
     color: $text-color;
     text-decoration: none;
   }
-
-  @media (max-width: 800px) {
-    padding: 2rem 2rem;
-    &-right {
-      a {
-        display: none;
-      }
-    }
-    &.active {
-      padding: 1rem 2rem;
-    }
-    &-logo {
-      width: 5rem;
-    }
-    &-link {
-      font-size: 1rem;
-    }
-  }
 }
-
-.Navbar-mobile {
-  display: none;
-  @media (max-width: 700px) {
-    display: block;
-    padding: 0.5rem;
-    border-radius: 50%;
-    @include flex(center, center);
-    background-color: $secondary-color;
-  }
-}
-
-@import "../../styles/sass/colors";
-@import "../../styles/sass/variables";
 
 .search {
   height: 3rem;
@@ -117,8 +70,5 @@
       display: flex;
       align-items: center;
     }
-  }
-  @media (max-width: 700px) {
-    display: none;
   }
 }

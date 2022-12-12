@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getMovies } from "@/redux/slices/movieSlice";
-import { Slider, Navbar, Carousel } from "@/components";
+import { Slider, Carousel, Navbar } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 export const Home = () => {
@@ -15,7 +15,7 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar fixed={true} active={false}/>
+      <Navbar />
       <Carousel carousel={carousel} />
       <Slider movies={popular} title={"Populares"} />
       <Slider movies={now_playing} title={"En emisión"} />

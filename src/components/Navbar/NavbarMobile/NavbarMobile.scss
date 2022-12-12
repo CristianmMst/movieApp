@@ -1,0 +1,122 @@
+@import "@/styles/sass/colors";
+@import "@/styles/sass/mixins";
+@import "@/styles/sass/variables";
+
+.Mobile {
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+  transition: left 0.5s ease;
+  background-color: $primary-color;
+
+  &.active {
+    left: 0;
+  }
+}
+
+.Navbar-mobile {
+  top: 0;
+  width: 100%;
+  z-index: 90;
+  opacity: 0.9;
+  position: fixed;
+  padding: 2rem 5rem;
+  transition: all 0.5s ease;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 26, 50, 1) 1%,
+    rgba(20, 26, 50, 0) 100%
+  );
+  @include flex(center, space-between);
+
+  &.active {
+    opacity: 1;
+    z-index: 90;
+    background: none;
+    padding: 1rem 5rem;
+    background-color: $primary-color;
+  }
+
+  &-right {
+    width: 20rem;
+    @include flex(center, space-between);
+    @media (max-width: 700px) {
+      &-link {
+        display: none;
+      }
+    }
+  }
+
+  &-logo {
+    width: 7rem;
+  }
+
+  &-link {
+    font-size: 1.1rem;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    padding: 2rem 2rem;
+    &-right {
+      &-link {
+        display: none;
+      }
+    }
+    &.active {
+      padding: 1rem 2rem;
+    }
+    &-logo {
+      width: 5rem;
+    }
+    &-link {
+      font-size: 1rem;
+    }
+  }
+}
+
+.Navbar-mobile-menu {
+  display: none;
+  @media (max-width: 700px) {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 50%;
+    @include flex(center, center);
+    background-color: $secondary-color;
+  }
+}
+
+.search {
+  height: 3rem;
+  display: flex;
+  border: $border;
+  align-items: center;
+  padding: 0 0.8rem;
+  border-radius: 0.8rem;
+  justify-content: space-between;
+  background-color: $secondary-color-op;
+
+  input {
+    height: 100%;
+    color: white;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+      font-size: 1rem;
+      color: rgba(184, 184, 184, 1);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+    }
+  }
+  @media (max-width: 700px) {
+    display: none;
+  }
+}

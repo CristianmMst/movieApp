@@ -4,10 +4,14 @@
 .Detail {
   height: 100%;
   display: flex;
+  overflow: hidden;
   position: relative;
   align-items: center;
-  overflow: hidden;
   padding: 5rem 2rem 0;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 
   &::before {
     top: 0;
@@ -21,10 +25,12 @@
   }
 
   &-background {
-    z-index: 1;
-    position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
+    height: 100%;
+    position: absolute;
+
     &::after {
       content: "";
       position: absolute;
@@ -43,8 +49,15 @@
 
   &-img {
     z-index: 2;
-    border-radius: 1rem;
     object-fit: cover;
+    border-radius: 1rem;
+
+    @media screen and (max-width: 700px) {
+      width: 15rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &-content {
@@ -55,12 +68,19 @@
     flex-direction: column;
     justify-content: space-between;
     &-title {
-      line-height: 1.8rem;
-      margin-bottom: 1rem;
+      line-height: 1.5rem;
+      margin-bottom: 0.8rem;
+
       h1 {
         color: white;
         font-size: 2rem;
+        margin-bottom: 0.5rem;
+
+        @media screen and (max-width: 700px) {
+          font-size: 1.5rem;
+        }
       }
+
       div {
         display: flex;
         flex-direction: row;
@@ -69,15 +89,34 @@
           margin: 0 0.2rem;
           font-size: 0.8rem;
         }
+        span {
+          color: white;
+          font-size: 0.8rem;
+          position: relative;
+          margin-left: 0.5rem;
+          padding-left: 0.8rem;
+          &::before {
+            content: "\2022";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+          }
+        }
       }
+    }
+    @media screen and (max-width: 700px) {
+      padding: 0;
     }
   }
 
   &-actions {
     width: 100%;
     color: white;
-    max-width: 300px;
-    margin-bottom: 1rem;
+    max-width: 230px;
+    position: relative;
+    margin-bottom: 1.5rem;
     @include flex(center, space-between);
 
     &-percentage {
@@ -87,17 +126,52 @@
       @include flex(center, center);
       background-color: $secondary-color;
       border: 5px solid $border-percentage-color;
+
+      span {
+        top: 100%;
+        font-size: 0.8rem;
+        position: absolute;
+      }
     }
   }
 
   &-buttons {
-    width: 200px;
+    width: 125px;
     @include flex(center, space-between);
+
     &-button {
       padding: 1rem;
       border-radius: 50%;
+      position: relative;
       @include flex(center, center);
       background-color: $secondary-color;
+
+      &:hover .Detail-buttons-tooltip {
+        opacity: 1;
+        bottom: -45px;
+        visibility: visible;
+      }
+    }
+    &-tooltip {
+      opacity: 0;
+      padding: 5px 10px;
+      color: white;
+      position: absolute;
+      visibility: hidden;
+      border-radius: 5px;
+      white-space: nowrap;
+      background-color: $secondary-color;
+      transition: opacity 0.5s ease;
+
+      &::before {
+        left: 50%;
+        top: -60%;
+        content: "";
+        position: absolute;
+        border: 10px solid;
+        transform: translateX(-50%);
+        border-color: #0000 #0000 $secondary-color #0000;
+      }
     }
   }
 
@@ -108,6 +182,19 @@
     }
     p {
       max-width: 650px;
+      @media screen and (max-width: 700px) {
+        font-size: 0.8rem;
+        max-height: 130px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+          padding: 2px;
+          border-radius: 2px;
+          background-color: $secondary-color;
+        }
+      }
     }
   }
 }

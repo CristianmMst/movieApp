@@ -1,9 +1,9 @@
 import "./Detail.scss";
 import { MovieDetail } from "@/types";
 import { FaBookmark } from "react-icons/fa";
-import { averagePercentage } from "@/utils/movie";
-import { AiFillHeart, AiFillStar } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import { API_IMAGE, API_IMAGE_POSTER_DETAIL } from "@/consts";
+import { averagePercentage, toHoursAndMinutes } from "@/utils/movie";
 
 export const Detail = ({ movie }: { movie: MovieDetail }) => {
   return (
@@ -33,21 +33,22 @@ export const Detail = ({ movie }: { movie: MovieDetail }) => {
                 </p>
               );
             })}
+            <span>{toHoursAndMinutes(movie.runtime)}</span>
           </div>
         </div>
         <div className="Detail-actions">
           <div className="Detail-actions-percentage">
             <h4>{averagePercentage(movie?.vote_average!)}</h4>
+            <span>Puntuación</span>
           </div>
           <div className="Detail-buttons">
             <button className="Detail-buttons-button">
               <AiFillHeart size={20} color="white" />
+              <span className="Detail-buttons-tooltip">Like</span>
             </button>
             <button className="Detail-buttons-button">
               <FaBookmark size={20} color="white" />
-            </button>
-            <button className="Detail-buttons-button">
-              <AiFillStar size={20} color="white" />
+              <span className="Detail-buttons-tooltip">Add Favorite</span>
             </button>
           </div>
         </div>
