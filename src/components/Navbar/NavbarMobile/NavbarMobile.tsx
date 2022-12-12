@@ -14,9 +14,11 @@ interface NavbarProps {
 export const NavbarMobile = ({ active }: NavbarProps) => {
   const [navScroll, setNavScroll] = useState(false);
   const [navMobileActive, setNavMobileActive] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(false);
 
   const handleMobile = () => {
     setNavMobileActive(!navMobileActive);
+    setActiveMenu(!activeMenu);
   };
 
   const navBarScroll = () => {
@@ -27,17 +29,20 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
 
   return (
     <>
-      <div className={`Mobile${navMobileActive ? " active" : ""}`}>
-        <div className="search">
-          <input type={"text"} placeholder="Buscar películas" />
-          <button type={"button"}>
-            <FiSearch className="icon" size={24} />
-          </button>
-        </div>
-        <Link to="#">Películas</Link>
-        <Link to="#">Series</Link>
-      </div>
-      <nav className={`Navbar-mobile${navScroll || active ? " active" : ""}`}>
+      {/* <div className={`Mobile${navMobileActive ? " active" : ""}`}> */}
+      {/*   <div className="search"> */}
+      {/*     <input type={"text"} placeholder="Buscar películas" /> */}
+      {/*     <button type={"button"}> */}
+      {/*       <FiSearch className="icon" size={24} /> */}
+      {/*     </button> */}
+      {/*   </div> */}
+      {/*   <Link to="#">Películas</Link> */}
+      {/*   <Link to="#">Series</Link> */}
+      {/* </div> */}
+      <nav
+        className={`Navbar-mobile${navScroll || active ? " active" : ""} ${activeMenu ? "active-mobile" : ""
+          }`}
+      >
         <div className="Navbar-right">
           <Link to={"/"}>
             <img className="Navbar-logo" src={logo} alt="logo" />

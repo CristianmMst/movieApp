@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 interface NavbarProps {
-  fixed?: boolean;
   active?: boolean;
 }
 
-export const Navbar = ({ active }: NavbarProps) => {
+export const NavbarPC = ({ active }: NavbarProps) => {
   const [navScroll, setNavScroll] = useState(false);
 
   const navBarScroll = () => {
@@ -40,4 +39,4 @@ export const Navbar = ({ active }: NavbarProps) => {
     </nav>
   );
 };
-export default Navbar;
+export default NavbarPC;

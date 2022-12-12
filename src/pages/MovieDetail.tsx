@@ -16,7 +16,7 @@ export const MovieDetail = () => {
 
   return (
     <>
-      <Navbar fixed={true} active={true} />
+      <Navbar active={true} />
       <Detail movie={movieDetail} />
     </>
   );

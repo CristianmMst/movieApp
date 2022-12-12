@@ -21,7 +21,6 @@
   top: 0;
   width: 100%;
   z-index: 90;
-  opacity: 0.9;
   position: fixed;
   padding: 2rem 5rem;
   transition: all 0.5s ease;
@@ -31,6 +30,17 @@
     rgba(20, 26, 50, 0) 100%
   );
   @include flex(center, space-between);
+
+  &::after {
+    top: 0;
+    width: 78%;
+    left: -100%;
+    content: "";
+    height: 100vh;
+    position: absolute;
+    background-color: red;
+    transition: left 0.5s ease;
+  }
 
   &.active {
     opacity: 1;
@@ -87,6 +97,12 @@
     border-radius: 50%;
     @include flex(center, center);
     background-color: $secondary-color;
+  }
+}
+
+.active-mobile {
+  &::after {
+    left: 0;
   }
 }
 
