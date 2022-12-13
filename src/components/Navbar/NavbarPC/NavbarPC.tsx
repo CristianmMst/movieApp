@@ -2,7 +2,7 @@ import "./NavbarPC.scss";
 import { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
+import { SearchInput } from "@/components";
 
 interface NavbarProps {
   active?: boolean;
@@ -21,7 +21,7 @@ export const NavbarPC = ({ active }: NavbarProps) => {
     <nav className={`Navbar${navScroll || active ? " active" : ""}`}>
       <div className="Navbar-right">
         <Link to={"/"}>
-          <img className="Navbar-logo" src={logo} alt="logo" />
+          <img className="Navbar-right-logo" src={logo} alt="logo" />
         </Link>
         <Link className="Navbar-right-link" to="">
           Películas
@@ -30,12 +30,7 @@ export const NavbarPC = ({ active }: NavbarProps) => {
           Series
         </Link>
       </div>
-      <div className="search">
-        <input type={"text"} placeholder="Buscar películas" />
-        <button type={"button"}>
-          <FiSearch className="icon" size={24} />
-        </button>
-      </div>
+      <SearchInput />
     </nav>
   );
 };

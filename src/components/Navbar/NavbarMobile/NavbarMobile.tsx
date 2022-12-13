@@ -1,10 +1,11 @@
 import "./NavbarMobile.scss";
 import { useState } from "react";
 import logo from "@/assets/logo.svg";
-import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import logoPequeño from "@/assets/logoPequeño.svg";
+import { Button, SearchInput } from "@/components";
 
 interface NavbarProps {
   fixed?: boolean;
@@ -13,8 +14,10 @@ interface NavbarProps {
 
 export const NavbarMobile = ({ active }: NavbarProps) => {
   const [navScroll, setNavScroll] = useState(false);
-  const [navMobileActive, setNavMobileActive] = useState(false);
   const [activeMenu, setActiveMenu] = useState(false);
+  const [navMobileActive, setNavMobileActive] = useState(false);
+  const [moviesModal, setMoviesModal] = useState(false);
+  const [seriesModal, setSeriesModal] = useState(false);
 
   const handleMobile = () => {
     setNavMobileActive(!navMobileActive);
@@ -28,35 +31,57 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
   window.addEventListener("scroll", navBarScroll);
 
   return (
-    <>
-      {/* <div className={`Mobile${navMobileActive ? " active" : ""}`}> */}
-      {/*   <div className="search"> */}
-      {/*     <input type={"text"} placeholder="Buscar películas" /> */}
-      {/*     <button type={"button"}> */}
-      {/*       <FiSearch className="icon" size={24} /> */}
-      {/*     </button> */}
-      {/*   </div> */}
-      {/*   <Link to="#">Películas</Link> */}
-      {/*   <Link to="#">Series</Link> */}
-      {/* </div> */}
-      <nav
-        className={`Navbar-mobile${navScroll || active ? " active" : ""} ${activeMenu ? "active-mobile" : ""
-          }`}
-      >
-        <div className="Navbar-right">
-          <Link to={"/"}>
-            <img className="Navbar-logo" src={logo} alt="logo" />
-          </Link>
+    <nav
+      className={`NavbarMobile${navScroll || active ? " active" : ""}${activeMenu ? " active-mobile" : ""
+        }`}
+    >
+      <div className="NavbarMobile-right">
+        <Link to={"/"}>
+          <img className="NavbarMobile-logo" src={logo} alt="logo" />
+        </Link>
+        <div className="NavbarMobile-links">
+          <img
+            className="NavbarMobile-logo-pequeño"
+            src={logoPequeño}
+            alt="logo"
+          />
+          <div className="NavbarMobile-buttons">
+            <Button text={"Entrar"} color={"dark"} />
+            <Button text={"Registro"} color={"white"} />
+          </div>
+          <SearchInput />
+          <div className="Links">
+            <div className="NavbarMobile-links-link">
+              <p onClick={() => setMoviesModal(!moviesModal)}>Películas</p>
+              {moviesModal ? (
+                <ul>
+                  <li>Popular</li>
+                  <li>Top Rated</li>
+                  <li>Upcoming</li>
+                </ul>
+              ) : null}
+            </div>
+            <div className="NavbarMobile-links-link">
+              <p onClick={() => setSeriesModal(!seriesModal)}>Series</p>
+              {seriesModal ? (
+                <ul>
+                  <li>Popular</li>
+                  <li>Top Rated</li>
+                  <li>Upcoming</li>
+                </ul>
+              ) : null}
+            </div>
+          </div>
         </div>
-        <div className="Navbar-mobile-menu" onClick={handleMobile}>
-          {navMobileActive ? (
-            <AiOutlineClose size={30} color="white" />
-          ) : (
-            <MdOutlineMenu size={30} color="white" />
-          )}
-        </div>
-      </nav>
-    </>
+      </div>
+      <div className="NavbarMobile-menu" onClick={handleMobile}>
+        {navMobileActive ? (
+          <AiOutlineClose size={30} color="white" />
+        ) : (
+          <MdOutlineMenu size={30} color="white" />
+        )}
+      </div>
+    </nav>
   );
 };
 export default NavbarMobile;

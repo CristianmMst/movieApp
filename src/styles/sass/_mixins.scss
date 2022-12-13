@@ -3,3 +3,11 @@
   align-items: $align;
   justify-content: $justify;
 }
+
+@mixin button($background) {
+  color: white;
+  padding: 10px 0;
+  min-width: 115px;
+  border-radius: 25px;
+  background-color: $background;
+}

@@ -6,20 +6,17 @@
   top: 0;
   width: 100%;
   z-index: 90;
-  opacity: 0.9;
   position: fixed;
   padding: 2rem 5rem;
   transition: all 0.5s ease;
   background: linear-gradient(
     to bottom,
-    rgba(20, 26, 50, 1) 1%,
+    rgba(20, 26, 50, 0.8) 1%,
     rgba(20, 26, 50, 0) 100%
   );
   @include flex(center, space-between);
 
   &.active {
-    opacity: 1;
-    z-index: 90;
     background: none;
     padding: 1rem 5rem;
     background-color: $primary-color;
@@ -28,47 +25,13 @@
   &-right {
     width: 20rem;
     @include flex(center, space-between);
+    &-logo {
+      width: 7rem;
+    }
     &-link {
       color: white;
+      font-size: 1.1rem;
       text-decoration: none;
-    }
-  }
-
-  &-logo {
-    width: 7rem;
-  }
-
-  &-link {
-    font-size: 1.1rem;
-    color: $text-color;
-    text-decoration: none;
-  }
-}
-
-.search {
-  height: 3rem;
-  display: flex;
-  border: $border;
-  align-items: center;
-  padding: 0 0.8rem;
-  border-radius: 0.8rem;
-  justify-content: space-between;
-  background-color: $secondary-color-op;
-
-  input {
-    height: 100%;
-    color: white;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-
-    &::placeholder {
-      font-size: 1rem;
-      color: rgba(184, 184, 184, 1);
-    }
-
-    button {
-      display: flex;
-      align-items: center;
     }
   }
 }

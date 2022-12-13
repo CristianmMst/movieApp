@@ -2,27 +2,16 @@
 @import "@/styles/sass/mixins";
 @import "@/styles/sass/variables";
 
-.Mobile {
-  top: 0;
-  left: -100%;
-  width: 80%;
-  height: 100vh;
-  z-index: 100;
-  position: fixed;
-  transition: left 0.5s ease;
-  background-color: $primary-color;
-
-  &.active {
-    left: 0;
-  }
+.Links {
+  margin-top: 1rem;
 }
 
-.Navbar-mobile {
+.NavbarMobile {
   top: 0;
+  z-index: 6;
   width: 100%;
-  z-index: 90;
   position: fixed;
-  padding: 2rem 5rem;
+  padding: 2rem 2rem;
   transition: all 0.5s ease;
   background: linear-gradient(
     to bottom,
@@ -38,61 +27,63 @@
     content: "";
     height: 100vh;
     position: absolute;
-    background-color: red;
     transition: left 0.5s ease;
+    background-color: $primary-color;
   }
 
   &.active {
-    opacity: 1;
-    z-index: 90;
     background: none;
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
     background-color: $primary-color;
   }
 
   &-right {
     width: 20rem;
     @include flex(center, space-between);
-    @media (max-width: 700px) {
-      &-link {
-        display: none;
-      }
-    }
   }
 
   &-logo {
-    width: 7rem;
+    width: 5rem;
+    &-pequeño {
+      width: 14rem;
+      align-self: center;
+      margin-bottom: 1rem;
+    }
   }
 
-  &-link {
-    font-size: 1.1rem;
-    color: $text-color;
-    text-decoration: none;
-  }
+  &-links {
+    top: 20px;
+    left: -100%;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    transition: left 0.5s ease;
+    justify-content: space-between;
 
-  @media (max-width: 800px) {
-    padding: 2rem 2rem;
-    &-right {
-      &-link {
-        display: none;
+    &-link {
+      p {
+        width: 80px;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      ul {
+        color: #cdcdcd;
+        list-style: none;
+        font-size: 0.7rem;
+        margin-left: 0.5rem;
       }
     }
-    &.active {
-      padding: 1rem 2rem;
-    }
-    &-logo {
-      width: 5rem;
-    }
-    &-link {
-      font-size: 1rem;
-    }
   }
-}
 
-.Navbar-mobile-menu {
-  display: none;
-  @media (max-width: 700px) {
-    display: block;
+  &-buttons {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+  &-menu {
     padding: 0.5rem;
     border-radius: 50%;
     @include flex(center, center);
@@ -104,35 +95,9 @@
   &::after {
     left: 0;
   }
-}
 
-.search {
-  height: 3rem;
-  display: flex;
-  border: $border;
-  align-items: center;
-  padding: 0 0.8rem;
-  border-radius: 0.8rem;
-  justify-content: space-between;
-  background-color: $secondary-color-op;
-
-  input {
-    height: 100%;
-    color: white;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-
-    &::placeholder {
-      font-size: 1rem;
-      color: rgba(184, 184, 184, 1);
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-    }
-  }
-  @media (max-width: 700px) {
-    display: none;
+  .NavbarMobile-links {
+    left: 25px;
+    z-index: 6;
   }
 }
