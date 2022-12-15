@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavbarMobile, NavbarPC } from "@/components";
+import { Outlet } from "react-router-dom";
 
 interface NavbarProps {
   active?: boolean;
@@ -17,6 +18,7 @@ export function Navbar({ active }: NavbarProps) {
       ) : (
         <NavbarPC active={active} />
       )}
+      <Outlet />
     </>
   );
 }

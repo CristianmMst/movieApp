@@ -61,18 +61,24 @@
     justify-content: space-between;
 
     &-link {
+      margin-bottom: 0.2rem;
       p {
         width: 80px;
         color: white;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: bold;
         text-decoration: none;
       }
       ul {
-        color: #cdcdcd;
         list-style: none;
-        font-size: 0.7rem;
-        margin-left: 0.5rem;
+        margin-left: 0.2rem;
+        li {
+          a {
+            color: #cdcdcd;
+            font-size: 0.8rem;
+            text-decoration: none;
+          }
+        }
       }
     }
   }

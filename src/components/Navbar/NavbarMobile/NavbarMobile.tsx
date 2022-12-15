@@ -53,23 +53,35 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
           <div className="Links">
             <div className="NavbarMobile-links-link">
               <p onClick={() => setMoviesModal(!moviesModal)}>Películas</p>
-              {moviesModal ? (
+              {moviesModal && (
                 <ul>
-                  <li>Popular</li>
-                  <li>Top Rated</li>
-                  <li>Upcoming</li>
+                  <li>
+                    <Link to="/movie/popular">Populares</Link>
+                  </li>
+                  <li>
+                    <Link to="/movie/top_rated">Mejor Valoradas</Link>
+                  </li>
+                  <li>
+                    <Link to="/movie/upcoming">Proximamente</Link>
+                  </li>
                 </ul>
-              ) : null}
+              )}
             </div>
             <div className="NavbarMobile-links-link">
               <p onClick={() => setSeriesModal(!seriesModal)}>Series</p>
-              {seriesModal ? (
+              {seriesModal && (
                 <ul>
-                  <li>Popular</li>
-                  <li>Top Rated</li>
-                  <li>Upcoming</li>
+                  <li>
+                    <Link to="/movie/popular">Populares</Link>
+                  </li>
+                  <li>
+                    <Link to="/movie/popular">Mejor Valoradas</Link>
+                  </li>
+                  <li>
+                    <Link to="/movie/popular">Proximamente</Link>
+                  </li>
                 </ul>
-              ) : null}
+              )}
             </div>
           </div>
         </div>

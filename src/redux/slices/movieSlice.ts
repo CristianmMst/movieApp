@@ -1,24 +1,19 @@
-import { CarouselMovie, MovieDetail, SliderMovie } from "@/types";
-import {
-  fetchCarousel,
-  fetchMovieDetail,
-  fetchNowPlaying,
-  fetchPopular,
-} from "@/hooks";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchMovieDetail, fetchPopularMovies } from "@/services/movies";
+import { CarouselMovie, MovieDetail, SliderMovie } from "@/types";
 
 interface MovieState {
-  carousel: CarouselMovie[];
   popular: SliderMovie[];
-  now_playing: SliderMovie[];
+  nowPlaying: SliderMovie[];
+  carousel: CarouselMovie[];
   movieDetail: MovieDetail;
 }
 
 const initialState: MovieState = {
-  carousel: [],
   popular: [],
-  now_playing: [],
+  carousel: [],
+  nowPlaying: [],
   movieDetail: {},
 };
 
@@ -26,50 +21,41 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    getMoviesCarousel: (state, action: PayloadAction<CarouselMovie[]>) => {
-      state.carousel = action.payload;
-    },
-    getMoviesPopular: (state, action: PayloadAction<SliderMovie[]>) => {
+    setPopular: (state, action) => {
       state.popular = action.payload;
     },
-    getMoviesNowPlaying: (state, action: PayloadAction<SliderMovie[]>) => {
-      state.now_playing = action.payload;
+    setNowPlaying: (state, action) => {
+      state.nowPlaying = action.payload;
     },
-    getMovieDetail: (state, action: PayloadAction<MovieDetail>) => {
+    getMoviesCarousel: (state, action) => {
+      state.carousel = action.payload;
+    },
+    getMovieDetail: (state, action) => {
       state.movieDetail = action.payload;
     },
   },
 });
+
+export const getPopularMovies = (): AppThunk => async (dispatch) => {
+  try {
+    const popular = await fetchPopularMovies();
+    dispatch(setPopular(popular));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getDetail =
   (id: number): AppThunk =>
     async (dispatch) => {
       try {
         const movie = await fetchMovieDetail(id);
-        dispatch(getMovieDetail(movie!));
+        dispatch(getMovieDetail(movie));
       } catch (error) {
         console.log(error);
       }
     };
 
-export const getMovies = (): AppThunk => async (dispatch) => {
-  try {
-    const carousel = await fetchCarousel();
-    const popular = await fetchPopular();
-    const nowPlaying = await fetchNowPlaying();
-    dispatch(getMovieDetail({}));
-    dispatch(getMoviesPopular(popular!));
-    dispatch(getMoviesCarousel(carousel!));
-    dispatch(getMoviesNowPlaying(nowPlaying!));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const {
-  getMoviesCarousel,
-  getMoviesPopular,
-  getMoviesNowPlaying,
-  getMovieDetail,
-} = movieSlice.actions;
+export const { getMoviesCarousel, getMovieDetail, setPopular, setNowPlaying } =
+  movieSlice.actions;
 export default movieSlice.reducer;

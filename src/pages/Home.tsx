@@ -1,24 +1,19 @@
-import { useEffect } from "react";
-import { getMovies } from "@/redux/slices/movieSlice";
+import { useGetMovies } from "@/hooks";
+import { useAppSelector } from "@/hooks/redux";
 import { Slider, Carousel, Navbar } from "@/components";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
 export const Home = () => {
-  const dispatch = useAppDispatch();
-  const { carousel, popular, now_playing } = useAppSelector(
-    (state) => state.movies
-  );
+  const { carousel } = useAppSelector((state) => state.movies);
+  const { popular, nowPlaying } = useAppSelector((state) => state.slider);
 
-  useEffect(() => {
-    dispatch(getMovies());
-  }, [dispatch]);
+  useGetMovies();
 
   return (
     <>
       <Navbar />
       <Carousel carousel={carousel} />
       <Slider movies={popular} title={"Populares"} />
-      <Slider movies={now_playing} title={"En emisión"} />
+      <Slider movies={nowPlaying} title={"En emisión"} />
     </>
   );
 };
