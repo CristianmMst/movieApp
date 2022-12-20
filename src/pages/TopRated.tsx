@@ -9,6 +9,7 @@ export const TopRated = () => {
 
   useEffect(() => {
     dispatch(getTopRatedMovies());
+    console.log(topRated);
   }, []);
 
   return (
