@@ -1,17 +1,17 @@
 import "./Button.scss";
 
 interface ButtonProps {
-  text: string;
+  children: string;
   color: "dark" | "white";
 }
 
-export const Button = ({ text, color }: ButtonProps) => {
+export const Button = ({ children, color }: ButtonProps) => {
   return (
     <button
       className={color === "dark" ? "ButtonDark" : "ButtonWhite"}
       type="button"
     >
-      {text}
+      {children}
     </button>
   );
 };

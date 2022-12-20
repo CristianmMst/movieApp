@@ -46,8 +46,8 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
             alt="logo"
           />
           <div className="NavbarMobile-buttons">
-            <Button text={"Entrar"} color={"dark"} />
-            <Button text={"Registro"} color={"white"} />
+            <Button color={"dark"}>Entrar</Button>
+            <Button color={"white"}>Registro</Button>
           </div>
           <SearchInput />
           <div className="Links">

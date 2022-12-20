@@ -1,8 +1,8 @@
 import "./NavbarPC.scss";
+import { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
-import { SearchInput } from "@/components";
+import { Button, SearchInput } from "@/components";
 
 interface NavbarProps {
   active?: boolean;
@@ -50,7 +50,11 @@ export const NavbarPC = ({ active }: NavbarProps) => {
           </div>
         </div>
       </div>
-      <SearchInput />
+      <div className="Navbar-buttons">
+        <SearchInput />
+        <Button color="white">Entrar</Button>
+        <Button color="dark">Registro</Button>
+      </div>
     </nav>
   );
 };

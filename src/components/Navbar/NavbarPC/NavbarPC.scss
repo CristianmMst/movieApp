@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 90;
   position: fixed;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
   transition: all 0.5s ease;
   background: linear-gradient(
     to bottom,
@@ -17,7 +17,7 @@
 
   &.active {
     background: none;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     background-color: $primary-color;
   }
 
@@ -35,6 +35,13 @@
       font-size: 1.1rem;
       text-decoration: none;
     }
+  }
+
+  &-buttons {
+    width: 35rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &-movies,
