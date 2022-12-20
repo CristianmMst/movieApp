@@ -1,8 +1,8 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { axiosInstance } from "@/utils";
-import { Fetch, MovieDetail, MovieFetch, SliderMovie } from "@/types";
+import { Fetch, MovieDetail, MovieFetch } from "@/types";
 
-export const fetchPopularMovies = async () => {
+export const fetchPopular = async () => {
   const {
     data: { results },
   } = await axiosInstance("/movie/popular");
@@ -38,43 +38,12 @@ export const fetchCarousel = async () => {
   }
 };
 
-export const fetchPopular = async () => {
+export const fetchTopRated = async () => {
   try {
     const {
-      data: { results: popular },
-    }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/popular");
-
-    const popularDetail: SliderMovie[] = popular.slice(0, 10).map((movie) => {
-      return {
-        id: movie.id,
-        title: movie.title,
-        image: movie.poster_path,
-        description: movie.overview,
-      };
-    });
-    return popularDetail;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const fetchNowPlaying = async () => {
-  try {
-    const {
-      data: { results: nowPlaying },
-    }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/now_playing");
-
-    const nowPlayingDetail: SliderMovie[] = nowPlaying
-      .slice(0, 10)
-      .map((movie) => {
-        return {
-          id: movie.id,
-          title: movie.title,
-          image: movie.poster_path,
-          description: movie.overview,
-        };
-      });
-    return nowPlayingDetail;
+      data: { results: topRated },
+    }: AxiosResponse<Fetch> = await axiosInstance.get("/movie/top_rated");
+    return topRated;
   } catch (error) {
     console.log(error);
   }

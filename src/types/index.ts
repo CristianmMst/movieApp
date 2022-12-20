@@ -1,8 +1,19 @@
-export interface SliderMovie {
+export interface Movie {
   id: number;
   image: string;
   title: string;
-  description: string;
+}
+
+export interface SliderMovie {
+  id?: number;
+  title?: string;
+  runtime?: number;
+  overview?: string;
+  vote_average?: number;
+  release_date?: string;
+  poster_path?: string;
+  genres?: genres[];
+  backdrop_path?: string;
 }
 
 export interface CarouselMovie {

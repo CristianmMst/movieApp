@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "./redux";
-import { getNowPlaying, getPopular } from "@/redux/slices/sliderSlice";
+import { getTopRated, getPopular } from "@/redux/slices/movieSlice";
 import { getMovieDetail, getMoviesCarousel } from "@/redux/slices/movieSlice";
 import {
   fetchCarousel,
-  fetchNowPlaying,
+  fetchTopRated,
   fetchPopular,
 } from "@/services/movies";
 
@@ -14,11 +14,11 @@ export const useGetMovies = () => {
     (async () => {
       const popular = await fetchPopular();
       const carousel = await fetchCarousel();
-      const nowPlaying = await fetchNowPlaying();
+      const nowPlaying = await fetchTopRated();
 
       dispatch(getMovieDetail({}));
       dispatch(getPopular(popular!));
-      dispatch(getNowPlaying(nowPlaying!));
+      dispatch(getTopRated(nowPlaying!));
       dispatch(getMoviesCarousel(carousel!));
     })();
   }, []);

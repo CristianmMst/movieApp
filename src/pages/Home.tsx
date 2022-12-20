@@ -4,7 +4,7 @@ import { Slider, Carousel, Navbar } from "@/components";
 
 export const Home = () => {
   const { carousel } = useAppSelector((state) => state.movies);
-  const { popular, nowPlaying } = useAppSelector((state) => state.slider);
+  const { popular, topRated } = useAppSelector((state) => state.movies);
 
   useGetMovies();
 
@@ -12,8 +12,8 @@ export const Home = () => {
     <>
       <Navbar />
       <Carousel carousel={carousel} />
-      <Slider movies={popular} title={"Populares"} />
-      <Slider movies={nowPlaying} title={"En emisión"} />
+      <Slider movies={popular.slice(0, 10)} title={"Populares"} />
+      <Slider movies={topRated.slice(0, 10)} title={"En emisión"} />
     </>
   );
 };

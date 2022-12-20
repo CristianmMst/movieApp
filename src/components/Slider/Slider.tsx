@@ -44,7 +44,7 @@ export const Slider = ({ movies, title }: PopularMoviesProps) => {
             <Link to={`movies/${movie.id}`}>
               <img
                 className="Swiper-img"
-                src={`${API_IMAGE_POSTER}${movie.image}`}
+                src={`${API_IMAGE_POSTER}${movie.poster_path}`}
                 alt={movie.title}
               />
             </Link>

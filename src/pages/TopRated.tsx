@@ -1,23 +1,23 @@
 import { useEffect } from "react";
 import { Movie } from "@/components";
-import { getPopularMovies } from "@/redux/slices/movieSlice";
+import { getTopRatedMovies } from "@/redux/slices/movieSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 
-export const Popular = () => {
+export const TopRated = () => {
   const dispatch = useAppDispatch();
-  const { popular } = useAppSelector((state) => state.movies);
+  const { topRated } = useAppSelector((state) => state.movies);
 
   useEffect(() => {
-    dispatch(getPopularMovies());
+    dispatch(getTopRatedMovies());
   }, []);
 
   return (
     <div className="Movies">
-      {popular.map((movie, index) => (
+      {topRated.map((movie, index) => (
         <Movie key={index} movie={movie} />
       ))}
     </div>
   );
 };
 
-export default Popular;
+export default TopRated;

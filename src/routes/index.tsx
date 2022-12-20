@@ -1,7 +1,7 @@
-import NotFound from "@/pages/NotFound";
-import { Home, MovieDetail, Popular } from "@/pages";
-import { createBrowserRouter } from "react-router-dom";
 import { Navbar } from "@/components";
+import NotFound from "@/pages/NotFound";
+import { createBrowserRouter } from "react-router-dom";
+import { Home, MovieDetail, Popular, TopRated } from "@/pages";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "movie/top_rated",
-        element: <Popular />,
+        element: <TopRated />,
       },
       {
         path: "movie/upcoming",

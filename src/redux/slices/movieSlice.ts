@@ -1,11 +1,15 @@
 import { AppThunk } from "../store";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMovieDetail, fetchPopularMovies } from "@/services/movies";
-import { CarouselMovie, MovieDetail, SliderMovie } from "@/types";
+import { CarouselMovie, MovieDetail } from "@/types";
+import {
+  fetchMovieDetail,
+  fetchPopular,
+  fetchTopRated,
+} from "@/services/movies";
 
 interface MovieState {
-  popular: SliderMovie[];
-  nowPlaying: SliderMovie[];
+  popular: MovieDetail[];
+  topRated: MovieDetail[];
   carousel: CarouselMovie[];
   movieDetail: MovieDetail;
 }
@@ -13,7 +17,7 @@ interface MovieState {
 const initialState: MovieState = {
   popular: [],
   carousel: [],
-  nowPlaying: [],
+  topRated: [],
   movieDetail: {},
 };
 
@@ -21,11 +25,11 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    setPopular: (state, action) => {
+    getPopular: (state, action) => {
       state.popular = action.payload;
     },
-    setNowPlaying: (state, action) => {
-      state.nowPlaying = action.payload;
+    getTopRated: (state, action) => {
+      state.topRated = action.payload;
     },
     getMoviesCarousel: (state, action) => {
       state.carousel = action.payload;
@@ -36,10 +40,19 @@ export const movieSlice = createSlice({
   },
 });
 
+export const getTopRatedMovies = (): AppThunk => async (dispatch) => {
+  try {
+    const topRated = await fetchTopRated();
+    dispatch(getTopRated(topRated));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getPopularMovies = (): AppThunk => async (dispatch) => {
   try {
-    const popular = await fetchPopularMovies();
-    dispatch(setPopular(popular));
+    const popular = await fetchPopular();
+    dispatch(getPopular(popular));
   } catch (error) {
     console.log(error);
   }
@@ -56,6 +69,6 @@ export const getDetail =
       }
     };
 
-export const { getMoviesCarousel, getMovieDetail, setPopular, setNowPlaying } =
+export const { getMoviesCarousel, getMovieDetail, getPopular, getTopRated } =
   movieSlice.actions;
 export default movieSlice.reducer;
