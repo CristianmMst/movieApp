@@ -1,7 +1,7 @@
 import "./NavbarPC.scss";
-import { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 import { SearchInput } from "@/components";
 
 interface NavbarProps {
@@ -23,12 +23,32 @@ export const NavbarPC = ({ active }: NavbarProps) => {
         <Link to={"/"}>
           <img className="Navbar-right-logo" src={logo} alt="logo" />
         </Link>
-        <Link className="Navbar-right-link" to="">
-          Películas
-        </Link>
-        <Link className="Navbar-right-link" to="">
-          Series
-        </Link>
+        <div className="Navbar-movies">
+          <p className="Navbar-right-link">Películas</p>
+          <div className="dropdown-menu">
+            <ul>
+              <li>
+                <Link to="movie/popular">Populares</Link>
+              </li>
+              <li>
+                <Link to="movie/top_rated">Mejor valoradas</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="Navbar-series">
+          <p className="Navbar-right-link">Series</p>
+          <div className="dropdown-menu">
+            <ul>
+              <li>
+                <Link to="movie/popular">Populares</Link>
+              </li>
+              <li>
+                <Link to="movie/top_rated">Mejor valoradas</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <SearchInput />
     </nav>

@@ -1,7 +1,6 @@
 @import "@/styles/sass/colors";
 @import "@/styles/sass/mixins";
 @import "@/styles/sass/variables";
-
 .Navbar {
   top: 0;
   width: 100%;
@@ -23,15 +22,47 @@
   }
 
   &-right {
+    position: relative;
     width: 20rem;
+    list-style: none;
     @include flex(center, space-between);
     &-logo {
       width: 7rem;
     }
     &-link {
       color: white;
+      cursor: pointer;
       font-size: 1.1rem;
       text-decoration: none;
+    }
+  }
+
+  &-movies,
+  &-series {
+    position: relative;
+    &:hover {
+      .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  ul {
+    padding: 1rem;
+    list-style: none;
+    position: absolute;
+    white-space: nowrap;
+    border-radius: 0.2rem;
+    background-color: $secondary-color;
+    li {
+      margin-bottom: 0.4rem;
+      a {
+        color: white;
+        text-decoration: none;
+      }
     }
   }
 }
