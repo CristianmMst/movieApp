@@ -1,4 +1,5 @@
 import "./Button.scss";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
   children: string;
@@ -7,12 +8,14 @@ interface ButtonProps {
 
 export const Button = ({ children, color }: ButtonProps) => {
   return (
-    <button
-      className={color === "dark" ? "ButtonDark" : "ButtonWhite"}
-      type="button"
-    >
-      {children}
-    </button>
+    <Link to={children === "Entrar" ? "/login" : "/signin"}>
+      <button
+        className={color === "dark" ? "ButtonDark" : "ButtonWhite"}
+        type="button"
+      >
+        {children}
+      </button>
+    </Link>
   );
 };
 

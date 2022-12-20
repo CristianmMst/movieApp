@@ -1,3 +1,5 @@
+export * from "./Login/Login";
+export * from "./SignIn/SignIn";
 export * from "./Navbar/Navbar";
 export * from "./Slider/Slider";
 export * from "./Detail/Detail";
