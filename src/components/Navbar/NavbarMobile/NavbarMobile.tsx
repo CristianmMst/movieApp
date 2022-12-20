@@ -61,9 +61,6 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
                   <li>
                     <Link to="/movie/top_rated">Mejor Valoradas</Link>
                   </li>
-                  <li>
-                    <Link to="/movie/upcoming">Proximamente</Link>
-                  </li>
                 </ul>
               )}
             </div>
@@ -76,9 +73,6 @@ export const NavbarMobile = ({ active }: NavbarProps) => {
                   </li>
                   <li>
                     <Link to="/movie/popular">Mejor Valoradas</Link>
-                  </li>
-                  <li>
-                    <Link to="/movie/popular">Proximamente</Link>
                   </li>
                 </ul>
               )}
