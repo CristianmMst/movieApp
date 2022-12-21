@@ -9,13 +9,13 @@ export const Login = () => {
           <div className="Login-title-icon">
             <FaUserAlt color="#3f4be1" />
           </div>
-          <h4 className="Login-title-title">Iniciar Sesion</h4>
+          <h4 className="Login-title-title">Iniciar Sesión</h4>
         </div>
         <form className="Form">
           <input
             type="email"
             className="Form-input"
-            placeholder="Correo Electronico"
+            placeholder="Email"
           />
           <input
             type="password"
@@ -26,6 +26,7 @@ export const Login = () => {
             Entrar
           </button>
         </form>
+        <p className="forgot">¿Olvidaste tu contraseña?</p>
       </div>
     </div>
   );

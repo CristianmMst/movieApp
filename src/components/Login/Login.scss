@@ -8,15 +8,16 @@
 }
 
 .Login {
-  padding: 1rem;
-  height: 20rem;
+  padding: 3rem;
+  width: 25rem;
+  height: 25rem;
   border-radius: 0.3rem;
   flex-direction: column;
   background-color: white;
-  @include flex(start, space-between);
+  @include flex(center, space-between);
 
   &-title {
-    width: 68%;
+    width: 10rem;
     @include flex(center, space-between);
 
     &-icon {
@@ -24,7 +25,7 @@
       height: 2.5rem;
       border-radius: 50%;
       @include flex(center, center);
-      background-color: rgba(135, 135, 255, .3);
+      background-color: rgba(135, 135, 255, 0.3);
     }
 
     &-title {
@@ -34,7 +35,8 @@
 }
 
 .Form {
-  height: 80%;
+  width: 100%;
+  height: 60%;
   flex-direction: column;
   @include flex(center, space-between);
 
@@ -55,4 +57,9 @@
     border-radius: 0.3rem;
     background-color: $secondary-color;
   }
+}
+
+.forgot {
+  color: #232350;
+  align-self: center;
 }
